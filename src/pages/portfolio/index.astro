@@ -1,0 +1,383 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const fabricationItems = await getCollection('fabrication');
+const materialItems = await getCollection('materials');
+
+// Sort items by date
+const sortedFabrication = fabricationItems.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+const sortedMaterials = materialItems.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const fabricationCategories = ['all', 'metal', 'structural', 'custom'];
+const materialCategories = ['all', 'raw', 'processed', 'hardware'];
+const sortOptions = [
+  { value: 'date-desc', label: 'Newest First' },
+  { value: 'date-asc', label: 'Oldest First' },
+  { value: 'title-asc', label: 'Title A-Z' },
+  { value: 'title-desc', label: 'Title Z-A' }
+];
+---
+
+<Layout title="Portfolio - Fabrication & Materials | KrrishCo">
+  <main class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16">
+      <div class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold text-center mb-6" data-aos="fade-down">
+          Our Portfolio
+        </h1>
+        <p class="text-xl text-center text-blue-100 max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">
+          Explore our comprehensive collection of fabrication projects and material solutions, 
+          showcasing our expertise in metal fabrication, structural work, and material supply.
+        </p>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-12">
+      <!-- Tabs -->
+      <div class="flex justify-center mb-12" data-aos="fade-up">
+        <div class="inline-flex bg-white rounded-full shadow-lg p-1">
+          <button 
+            id="fab-tab"
+            class="px-8 py-3 rounded-full text-lg font-medium transition-all duration-300
+                   data-[active=true]:bg-blue-500 data-[active=true]:text-white
+                   data-[active=false]:text-gray-600 data-[active=false]:hover:text-blue-500"
+            data-active="true"
+          >
+            Fabrication Projects
+          </button>
+          <button 
+            id="mat-tab"
+            class="px-8 py-3 rounded-full text-lg font-medium transition-all duration-300
+                   data-[active=true]:bg-green-500 data-[active=true]:text-white
+                   data-[active=false]:text-gray-600 data-[active=false]:hover:text-green-500"
+            data-active="false"
+          >
+            Material Supply
+          </button>
+        </div>
+      </div>
+
+      <!-- Search and Sort Controls -->
+      <div class="max-w-5xl mx-auto mb-8">
+        <div class="bg-white rounded-xl shadow-md p-4 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between" data-aos="fade-up">
+          <!-- Search Input -->
+          <div class="relative flex-grow max-w-md">
+            <input 
+              type="search" 
+              id="portfolio-search"
+              placeholder="Search projects..."
+              class="w-full px-4 py-2 pl-10 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+            />
+            <svg class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+
+          <!-- Sort Dropdown -->
+          <div class="relative w-48">
+            <select 
+              id="sort-select"
+              class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none cursor-pointer bg-white pr-10"
+            >
+              {sortOptions.map(option => (
+                <option value={option.value}>{option.label}</option>
+              ))}
+            </select>
+            <svg class="absolute right-3 top-3 h-4 w-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="max-w-5xl mx-auto mb-12">
+        <!-- Fabrication Filters -->
+        <div id="fab-filters" class="flex justify-center flex-wrap gap-3" data-aos="fade-up">
+          {fabricationCategories.map(category => (
+            <button
+              class="category-filter px-6 py-2 rounded-full text-sm font-medium transition-all duration-300
+                     shadow-sm hover:shadow-md
+                     data-[active=true]:bg-blue-500 data-[active=true]:text-white
+                     data-[active=false]:bg-white data-[active=false]:text-gray-600 data-[active=false]:hover:bg-blue-50"
+              data-category={category}
+              data-active={category === 'all'}
+            >
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </button>
+          ))}
+        </div>
+
+        <!-- Material Filters -->
+        <div id="mat-filters" class="hidden justify-center flex-wrap gap-3" data-aos="fade-up">
+          {materialCategories.map(category => (
+            <button
+              class="category-filter px-6 py-2 rounded-full text-sm font-medium transition-all duration-300
+                     shadow-sm hover:shadow-md
+                     data-[active=true]:bg-green-500 data-[active=true]:text-white
+                     data-[active=false]:bg-white data-[active=false]:text-gray-600 data-[active=false]:hover:bg-green-50"
+              data-category={category}
+              data-active={category === 'all'}
+            >
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="max-w-7xl mx-auto">
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden text-center py-12">
+          <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 class="text-xl font-medium text-gray-900 mb-1">No items found</h3>
+          <p class="text-gray-500">Try adjusting your search or filter criteria</p>
+        </div>
+
+        <!-- Fabrication Projects -->
+        <section id="fabrication-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sortedFabrication.map((item, index) => (
+            <a 
+              href={`/portfolio/${item.id.split('/').pop()}`} 
+              class="group"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              data-category={item.data.category}
+            >
+              <article class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
+                {item.data.image && (
+                  <div class="aspect-video overflow-hidden">
+                    <Image 
+                      src={item.data.image}
+                      alt={item.data.title}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
+                )}
+                <div class="p-6">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold group-hover:text-blue-600 transition-colors">
+                      {item.data.title}
+                    </h3>
+                    <span class="px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-full">
+                      {item.data.category}
+                    </span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-2">{item.data.description}</p>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-500">
+                      {new Date(item.data.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short'
+                      })}
+                    </span>
+                    <span class="text-blue-600 font-medium group-hover:translate-x-1 transition-transform inline-flex items-center">
+                      View Details
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </article>
+            </a>
+          ))}
+        </section>
+
+        <!-- Materials -->
+        <section id="materials-section" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sortedMaterials.map((item, index) => (
+            <a 
+              href={`/materials/${item.id.split('/').pop()}`} 
+              class="group"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              data-category={item.data.category}
+            >
+              <article class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
+                {item.data.image && (
+                  <div class="aspect-video overflow-hidden">
+                    <Image 
+                      src={item.data.image}
+                      alt={item.data.title}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
+                )}
+                <div class="p-6">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="text-xl font-semibold group-hover:text-green-600 transition-colors">
+                      {item.data.title}
+                    </h3>
+                    <span class="px-3 py-1 text-sm font-medium text-green-600 bg-green-50 rounded-full">
+                      {item.data.category}
+                    </span>
+                  </div>
+                  <p class="text-gray-600 mb-4 line-clamp-2">{item.data.description}</p>
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-500">
+                      {new Date(item.data.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short'
+                      })}
+                    </span>
+                    <span class="text-green-600 font-medium group-hover:translate-x-1 transition-transform inline-flex items-center">
+                      View Details
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </article>
+            </a>
+          ))}
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const fabTab = document.getElementById('fab-tab');
+  const matTab = document.getElementById('mat-tab');
+  const fabSection = document.getElementById('fabrication-section');
+  const matSection = document.getElementById('materials-section');
+  const fabFilters = document.getElementById('fab-filters');
+  const matFilters = document.getElementById('mat-filters');
+  const searchInput = document.getElementById('portfolio-search') as HTMLInputElement;
+  const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+  const noResults = document.getElementById('no-results');
+
+  let currentSection = fabSection;
+  let searchTimeout: ReturnType<typeof setTimeout>;
+
+  // Tab switching
+  fabTab?.addEventListener('click', () => {
+    fabTab.setAttribute('data-active', 'true');
+    matTab?.setAttribute('data-active', 'false');
+    
+    fabSection?.classList.remove('hidden');
+    matSection?.classList.add('hidden');
+    fabFilters?.classList.remove('hidden');
+    fabFilters?.classList.add('flex');
+    matFilters?.classList.remove('flex');
+    matFilters?.classList.add('hidden');
+    
+    currentSection = fabSection;
+    filterAndSort();
+  });
+
+  matTab?.addEventListener('click', () => {
+    matTab.setAttribute('data-active', 'true');
+    fabTab?.setAttribute('data-active', 'false');
+    
+    matSection?.classList.remove('hidden');
+    fabSection?.classList.add('hidden');
+    matFilters?.classList.remove('hidden');
+    matFilters?.classList.add('flex');
+    fabFilters?.classList.remove('flex');
+    fabFilters?.classList.add('hidden');
+    
+    currentSection = matSection;
+    filterAndSort();
+  });
+
+  // Category filtering
+  document.querySelectorAll('.category-filter').forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.getAttribute('data-category');
+      
+      // Update active state
+      button.closest('div')?.querySelectorAll('.category-filter').forEach(btn => {
+        btn.setAttribute('data-active', 'false');
+      });
+      button.setAttribute('data-active', 'true');
+
+      filterAndSort();
+    });
+  });
+
+  // Search functionality
+  searchInput?.addEventListener('input', () => {
+    if (searchTimeout) clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(filterAndSort, 300) as unknown as ReturnType<typeof setTimeout>;
+  });
+
+  // Sort functionality
+  sortSelect?.addEventListener('change', filterAndSort);
+
+  function filterAndSort() {
+    if (!currentSection) return;
+
+    const searchTerm = searchInput?.value.toLowerCase() || '';
+    const selectedCategory = currentSection.closest('main')?.querySelector('.category-filter[data-active="true"]')?.getAttribute('data-category');
+    const sortValue = sortSelect?.value;
+
+    const items = Array.from(currentSection.querySelectorAll('a'));
+    let visibleCount = 0;
+
+    // Filter items
+    items.forEach(item => {
+      const title = item.querySelector('h3')?.textContent?.toLowerCase() || '';
+      const description = item.querySelector('p')?.textContent?.toLowerCase() || '';
+      const category = item.getAttribute('data-category');
+      
+      const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+      const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+
+      if (matchesSearch && matchesCategory) {
+        item.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+
+    // Sort visible items
+    const sortedItems = items
+      .filter(item => !item.classList.contains('hidden'))
+      .sort((a, b) => {
+        const titleA = a.querySelector('h3')?.textContent || '';
+        const titleB = b.querySelector('h3')?.textContent || '';
+        const dateA = new Date(a.querySelector('.text-gray-500')?.textContent || '').getTime();
+        const dateB = new Date(b.querySelector('.text-gray-500')?.textContent || '').getTime();
+
+        switch (sortValue) {
+          case 'title-asc':
+            return titleA.localeCompare(titleB);
+          case 'title-desc':
+            return titleB.localeCompare(titleA);
+          case 'date-asc':
+            return dateA - dateB;
+          default: // date-desc
+            return dateB - dateA;
+        }
+      });
+
+    // Reorder items in the DOM
+    sortedItems.forEach(item => currentSection?.appendChild(item));
+
+    // Show/hide no results message
+    if (noResults) {
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+  }
+</script>

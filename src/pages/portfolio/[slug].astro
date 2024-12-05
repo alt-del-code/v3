@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+type FabricationEntry = CollectionEntry<'fabrication'>;
+type MaterialEntry = CollectionEntry<'materials'>;
+type PortfolioEntry = FabricationEntry | MaterialEntry;
+
+export async function getStaticPaths() {
+  const fabricationItems = await getCollection('fabrication');
+  const materialItems = await getCollection('materials');
+  const allItems: PortfolioEntry[] = [...fabricationItems, ...materialItems];
+
+  return allItems.map((item) => ({
+    params: { slug: item.id.split('/').pop() },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+
+// Render the content
+const { Content } = await item.render();
+
+// Determine if it's a fabrication or material item
+const isFabrication = item.collection === 'fabrication';
+const accentColor = isFabrication ? 'blue' : 'green';
+
+// Format date
+const formattedDate = new Date(item.data.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout title={`${item.data.title} | KrrishCo Portfolio`}>
+  <main class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex mb-8 text-sm" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a href="/" class="text-gray-700 hover:text-gray-900">Home</a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+              </svg>
+              <a href="/portfolio" class="text-gray-700 hover:text-gray-900">Portfolio</a>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+              </svg>
+              <span class="text-gray-500">{item.data.title}</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Header -->
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4" data-aos="fade-up">{item.data.title}</h1>
+        <div class="flex flex-wrap gap-4 items-center text-sm text-gray-600" data-aos="fade-up" data-aos-delay="100">
+          <span>{formattedDate}</span>
+          <span class={`px-3 py-1 rounded-full text-${accentColor}-600 bg-${accentColor}-50 font-medium`}>
+            {item.data.category}
+          </span>
+          {isFabrication && item.data.clientName && (
+            <span>Client: {item.data.clientName}</span>
+          )}
+        </div>
+      </header>
+
+      <!-- Main Image -->
+      {item.data.image && (
+        <div class="mb-8 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up">
+          <Image
+            src={item.data.image}
+            alt={item.data.title}
+            class="w-full h-auto"
+            width={1200}
+            height={800}
+          />
+        </div>
+      )}
+
+      <!-- Description -->
+      <div class="prose prose-lg max-w-none mb-12" data-aos="fade-up">
+        <p class="text-xl text-gray-600 mb-8">{item.data.description}</p>
+        
+        <!-- Additional details for Fabrication -->
+        {isFabrication && item.data.technologies && (
+          <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Technologies Used</h2>
+            <ul class="list-disc list-inside space-y-2">
+              {item.data.technologies.map((tech: string) => (
+                <li>{tech}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <!-- Additional details for Materials -->
+        {!isFabrication && item.data.specifications && (
+          <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Specifications</h2>
+            <ul class="list-disc list-inside space-y-2">
+              {item.data.specifications.map((spec: string) => (
+                <li>{spec}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <!-- Main Content -->
+        <Content />
+      </div>
+
+      <!-- Additional Images Gallery -->
+      {item.data.additionalImages && item.data.additionalImages.length > 0 && (
+        <div class="mb-12" data-aos="fade-up">
+          <h2 class="text-2xl font-semibold mb-6">Gallery</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {item.data.additionalImages.map((image: any) => (
+              <div class="rounded-lg overflow-hidden shadow-md">
+                <Image
+                  src={image}
+                  alt={`Additional image for ${item.data.title}`}
+                  class="w-full h-64 object-cover"
+                  width={600}
+                  height={400}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Back to Portfolio -->
+      <div class="text-center" data-aos="fade-up">
+        <a
+          href="/portfolio"
+          class={`inline-flex items-center px-6 py-3 rounded-full bg-${accentColor}-500 text-white hover:bg-${accentColor}-600 transition-colors`}
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back to Portfolio
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>
