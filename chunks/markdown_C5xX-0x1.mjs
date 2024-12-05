@@ -1,4 +1,4 @@
-import { A as AstroJSX, e as renderJSX, f as createVNode, g as AstroUserError, h as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, U as UnsupportedImageFormat, I as IncompatibleDescriptorOptions, i as UnsupportedImageConversion, N as NoImageMetadata, j as FailedToFetchRemoteImageDimensions, k as ExpectedImageOptions, l as ExpectedNotESMImage, n as InvalidImageService, t as toStyleString, c as createAstro, a as createComponent, o as ImageMissingAlt, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes, F as Fragment, _ as __astro_tag_component__, p as renderUniqueStylesheet, q as renderScriptElement, u as unescapeHTML, v as createHeadAndContent, d as renderComponent, w as isHTMLString } from './astro/server_CW4UvyD6.mjs';
+import { A as AstroJSX, e as renderJSX, f as createVNode, g as AstroUserError, h as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, U as UnsupportedImageFormat, I as IncompatibleDescriptorOptions, i as UnsupportedImageConversion, N as NoImageMetadata, j as FailedToFetchRemoteImageDimensions, k as ExpectedImageOptions, l as ExpectedNotESMImage, n as InvalidImageService, t as toStyleString, c as createAstro, a as createComponent, o as ImageMissingAlt, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes, p as renderUniqueStylesheet, q as renderScriptElement, u as unescapeHTML, v as createHeadAndContent, d as renderComponent, w as isHTMLString, F as Fragment, _ as __astro_tag_component__ } from './astro/server_CW4UvyD6.mjs';
 import 'kleur/colors';
 import 'clsx';
 import Markdoc from '@markdoc/markdoc';
@@ -467,7 +467,7 @@ const baseService = {
     Object.entries(params).forEach(([param, key]) => {
       options[key] && searchParams.append(param, options[key].toString());
     });
-    const imageEndpoint = joinPaths("/", imageConfig.endpoint.route);
+    const imageEndpoint = joinPaths("/v3", imageConfig.endpoint.route);
     return `${imageEndpoint}?${searchParams}`;
   },
   parseURL(url) {
@@ -1345,7 +1345,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_Dzbv5jSt.mjs'
+      './sharp_DPszFMN5.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -1508,7 +1508,7 @@ function applyResponsiveAttributes({
   return attributes;
 }
 
-const $$Astro$2 = createAstro("https://krrishco.com");
+const $$Astro$2 = createAstro("https://alt-del-code.github.io");
 const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$Image;
@@ -1543,7 +1543,7 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<img${addAttribute(image.src, "src")}${spreadAttributes(attributes)}${addAttribute(className, "class")}>`;
 }, "D:/krrish/v3/node_modules/astro/components/Image.astro", void 0);
 
-const $$Astro$1 = createAstro("https://krrishco.com");
+const $$Astro$1 = createAstro("https://alt-del-code.github.io");
 const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Picture;
@@ -1630,25 +1630,25 @@ const _astro_assets = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePrope
 }, Symbol.toStringTag, { value: 'Module' }));
 
 async function getMod$4() {
-						return Promise.resolve().then(() => slide1);
+						return Promise.resolve().then(() => slide3);
 					}
 					const collectedLinks$4 = [];
 					const collectedStyles$4 = ["[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}\n"];
 					const defaultMod$4 = { __astroPropagation: true, getMod: getMod$4, collectedLinks: collectedLinks$4, collectedStyles: collectedStyles$4, collectedScripts: [] };
 
-const slide1$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const slide3$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: defaultMod$4
 }, Symbol.toStringTag, { value: 'Module' }));
 
 async function getMod$3() {
-						return Promise.resolve().then(() => slide3);
+						return Promise.resolve().then(() => slide1);
 					}
 					const collectedLinks$3 = "@@ASTRO-LINKS@@";
 					const collectedStyles$3 = "@@ASTRO-STYLES@@";
 					const defaultMod$3 = { __astroPropagation: true, getMod: getMod$3, collectedLinks: collectedLinks$3, collectedStyles: collectedStyles$3, collectedScripts: [] };
 
-const slide3$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const slide1$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: defaultMod$3
 }, Symbol.toStringTag, { value: 'Module' }));
@@ -1687,278 +1687,6 @@ async function getMod() {
 const main$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: defaultMod
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const frontmatter$4 = {
-  "title": "precision-fabrication",
-  "image": "/src/assets/images/slide-1/image.png",
-  "serviceTitle": "Precision Fabrication",
-  "serviceDescription": "Custom metal fabrication with state-of-the-art machinery and expert craftsmanship",
-  "icon": "lucide:settings-2",
-  "link": "/services/fabrication",
-  "order": 1
-};
-function getHeadings$4() {
-  return [];
-}
-const __usesAstroImage$4 = true;
-function _createMdxContent$4(props) {
-  const _components = {
-    li: "li",
-    p: "p",
-    ul: "ul",
-    ...props.components
-  };
-  return createVNode(Fragment, {
-    children: [createVNode(_components.p, {
-      children: "Our precision fabrication services include:"
-    }), "\n", createVNode(_components.ul, {
-      children: ["\n", createVNode(_components.li, {
-        children: "CNC Machining"
-      }), "\n", createVNode(_components.li, {
-        children: "Sheet Metal Work"
-      }), "\n", createVNode(_components.li, {
-        children: "Custom Fabrication"
-      }), "\n", createVNode(_components.li, {
-        children: "Quality Assurance"
-      }), "\n"]
-    })]
-  });
-}
-function MDXContent$4(props = {}) {
-  const {wrapper: MDXLayout} = props.components || ({});
-  return MDXLayout ? createVNode(MDXLayout, {
-    ...props,
-    children: createVNode(_createMdxContent$4, {
-      ...props
-    })
-  }) : _createMdxContent$4(props);
-}
-
-const url$4 = "src/content/hero-slides/slide-1.mdx";
-const file$4 = "D:/krrish/v3/src/content/hero-slides/slide-1.mdx";
-const Content$4 = (props = {}) => MDXContent$4({
-  ...props,
-  components: { Fragment: Fragment, ...props.components, "astro-image":  props.components?.img ?? $$Image },
-});
-Content$4[Symbol.for('mdx-component')] = true;
-Content$4[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter$4.layout);
-Content$4.moduleId = "D:/krrish/v3/src/content/hero-slides/slide-1.mdx";
-__astro_tag_component__(Content$4, 'astro:jsx');
-
-const slide1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  Content: Content$4,
-  __usesAstroImage: __usesAstroImage$4,
-  default: Content$4,
-  file: file$4,
-  frontmatter: frontmatter$4,
-  getHeadings: getHeadings$4,
-  url: url$4
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const frontmatter$3 = {
-  "title": "hardware-solutions",
-  "image": "/src/assets/images/slide3.jpg",
-  "serviceTitle": "Hardware Solutions",
-  "serviceDescription": "Quality hardware products and customized solutions for industrial applications",
-  "icon": "lucide:wrench",
-  "link": "/services/hardware",
-  "order": 3
-};
-function getHeadings$3() {
-  return [];
-}
-const __usesAstroImage$3 = true;
-function _createMdxContent$3(props) {
-  const _components = {
-    li: "li",
-    p: "p",
-    ul: "ul",
-    ...props.components
-  };
-  return createVNode(Fragment, {
-    children: [createVNode(_components.p, {
-      children: "Our hardware solutions include:"
-    }), "\n", createVNode(_components.ul, {
-      children: ["\n", createVNode(_components.li, {
-        children: "Industrial Hardware"
-      }), "\n", createVNode(_components.li, {
-        children: "Custom Components"
-      }), "\n", createVNode(_components.li, {
-        children: "Specialized Tools"
-      }), "\n", createVNode(_components.li, {
-        children: "Technical Support"
-      }), "\n"]
-    })]
-  });
-}
-function MDXContent$3(props = {}) {
-  const {wrapper: MDXLayout} = props.components || ({});
-  return MDXLayout ? createVNode(MDXLayout, {
-    ...props,
-    children: createVNode(_createMdxContent$3, {
-      ...props
-    })
-  }) : _createMdxContent$3(props);
-}
-
-const url$3 = "src/content/hero-slides/slide-3.mdx";
-const file$3 = "D:/krrish/v3/src/content/hero-slides/slide-3.mdx";
-const Content$3 = (props = {}) => MDXContent$3({
-  ...props,
-  components: { Fragment: Fragment, ...props.components, "astro-image":  props.components?.img ?? $$Image },
-});
-Content$3[Symbol.for('mdx-component')] = true;
-Content$3[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter$3.layout);
-Content$3.moduleId = "D:/krrish/v3/src/content/hero-slides/slide-3.mdx";
-__astro_tag_component__(Content$3, 'astro:jsx');
-
-const slide3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  Content: Content$3,
-  __usesAstroImage: __usesAstroImage$3,
-  default: Content$3,
-  file: file$3,
-  frontmatter: frontmatter$3,
-  getHeadings: getHeadings$3,
-  url: url$3
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const frontmatter$2 = {
-  "title": "industrial-supply",
-  "image": "/src/assets/images/slide-2/image.png",
-  "serviceTitle": "Industrial Supply",
-  "serviceDescription": "Comprehensive range of industrial materials and components for manufacturing needs",
-  "icon": "lucide:boxes",
-  "link": "/services/supply",
-  "order": 2
-};
-function getHeadings$2() {
-  return [];
-}
-const __usesAstroImage$2 = true;
-function _createMdxContent$2(props) {
-  const _components = {
-    li: "li",
-    p: "p",
-    ul: "ul",
-    ...props.components
-  };
-  return createVNode(Fragment, {
-    children: [createVNode(_components.p, {
-      children: "We supply a wide range of industrial materials:"
-    }), "\n", createVNode(_components.ul, {
-      children: ["\n", createVNode(_components.li, {
-        children: "Raw Materials"
-      }), "\n", createVNode(_components.li, {
-        children: "Industrial Components"
-      }), "\n", createVNode(_components.li, {
-        children: "Manufacturing Supplies"
-      }), "\n", createVNode(_components.li, {
-        children: "Custom Orders"
-      }), "\n"]
-    })]
-  });
-}
-function MDXContent$2(props = {}) {
-  const {wrapper: MDXLayout} = props.components || ({});
-  return MDXLayout ? createVNode(MDXLayout, {
-    ...props,
-    children: createVNode(_createMdxContent$2, {
-      ...props
-    })
-  }) : _createMdxContent$2(props);
-}
-
-const url$2 = "src/content/hero-slides/slide-2.mdx";
-const file$2 = "D:/krrish/v3/src/content/hero-slides/slide-2.mdx";
-const Content$2 = (props = {}) => MDXContent$2({
-  ...props,
-  components: { Fragment: Fragment, ...props.components, "astro-image":  props.components?.img ?? $$Image },
-});
-Content$2[Symbol.for('mdx-component')] = true;
-Content$2[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter$2.layout);
-Content$2.moduleId = "D:/krrish/v3/src/content/hero-slides/slide-2.mdx";
-__astro_tag_component__(Content$2, 'astro:jsx');
-
-const slide2 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  Content: Content$2,
-  __usesAstroImage: __usesAstroImage$2,
-  default: Content$2,
-  file: file$2,
-  frontmatter: frontmatter$2,
-  getHeadings: getHeadings$2,
-  url: url$2
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const frontmatter$1 = {
-  "title": "technical-expertise",
-  "image": "/src/assets/images/slide4.jpg",
-  "serviceTitle": "Technical Expertise",
-  "serviceDescription": "15+ years of technical excellence in manufacturing and fabrication services",
-  "icon": "lucide:award",
-  "link": "/services/expertise",
-  "order": 4
-};
-function getHeadings$1() {
-  return [];
-}
-const __usesAstroImage$1 = true;
-function _createMdxContent$1(props) {
-  const _components = {
-    li: "li",
-    p: "p",
-    ul: "ul",
-    ...props.components
-  };
-  return createVNode(Fragment, {
-    children: [createVNode(_components.p, {
-      children: "Our technical expertise covers:"
-    }), "\n", createVNode(_components.ul, {
-      children: ["\n", createVNode(_components.li, {
-        children: "Manufacturing Excellence"
-      }), "\n", createVNode(_components.li, {
-        children: "Quality Control"
-      }), "\n", createVNode(_components.li, {
-        children: "Process Optimization"
-      }), "\n", createVNode(_components.li, {
-        children: "Industry Best Practices"
-      }), "\n"]
-    })]
-  });
-}
-function MDXContent$1(props = {}) {
-  const {wrapper: MDXLayout} = props.components || ({});
-  return MDXLayout ? createVNode(MDXLayout, {
-    ...props,
-    children: createVNode(_createMdxContent$1, {
-      ...props
-    })
-  }) : _createMdxContent$1(props);
-}
-
-const url$1 = "src/content/hero-slides/slide-4.mdx";
-const file$1 = "D:/krrish/v3/src/content/hero-slides/slide-4.mdx";
-const Content$1 = (props = {}) => MDXContent$1({
-  ...props,
-  components: { Fragment: Fragment, ...props.components, "astro-image":  props.components?.img ?? $$Image },
-});
-Content$1[Symbol.for('mdx-component')] = true;
-Content$1[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter$1.layout);
-Content$1.moduleId = "D:/krrish/v3/src/content/hero-slides/slide-4.mdx";
-__astro_tag_component__(Content$1, 'astro:jsx');
-
-const slide4 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  Content: Content$1,
-  __usesAstroImage: __usesAstroImage$1,
-  default: Content$1,
-  file: file$1,
-  frontmatter: frontmatter$1,
-  getHeadings: getHeadings$1,
-  url: url$1
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const ComponentNode = createComponent({
@@ -2056,7 +1784,7 @@ function isPropagatedAssetsModule(module) {
   return typeof module === "object" && module != null && "__astroPropagation" in module;
 }
 
-const $$Astro = createAstro("https://krrishco.com");
+const $$Astro = createAstro("https://alt-del-code.github.io");
 const $$Renderer = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Renderer;
@@ -2275,6 +2003,278 @@ const assetsConfig = {
   }
 };
 
+const frontmatter$4 = {
+  "title": "hardware-solutions",
+  "image": "/src/assets/images/slide3.jpg",
+  "serviceTitle": "Hardware Solutions",
+  "serviceDescription": "Quality hardware products and customized solutions for industrial applications",
+  "icon": "lucide:wrench",
+  "link": "/services/hardware",
+  "order": 3
+};
+function getHeadings$4() {
+  return [];
+}
+const __usesAstroImage$4 = true;
+function _createMdxContent$4(props) {
+  const _components = {
+    li: "li",
+    p: "p",
+    ul: "ul",
+    ...props.components
+  };
+  return createVNode(Fragment, {
+    children: [createVNode(_components.p, {
+      children: "Our hardware solutions include:"
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: "Industrial Hardware"
+      }), "\n", createVNode(_components.li, {
+        children: "Custom Components"
+      }), "\n", createVNode(_components.li, {
+        children: "Specialized Tools"
+      }), "\n", createVNode(_components.li, {
+        children: "Technical Support"
+      }), "\n"]
+    })]
+  });
+}
+function MDXContent$4(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? createVNode(MDXLayout, {
+    ...props,
+    children: createVNode(_createMdxContent$4, {
+      ...props
+    })
+  }) : _createMdxContent$4(props);
+}
+
+const url$4 = "src/content/hero-slides/slide-3.mdx";
+const file$4 = "D:/krrish/v3/src/content/hero-slides/slide-3.mdx";
+const Content$4 = (props = {}) => MDXContent$4({
+  ...props,
+  components: { Fragment: Fragment, ...props.components, "astro-image":  props.components?.img ?? $$Image },
+});
+Content$4[Symbol.for('mdx-component')] = true;
+Content$4[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter$4.layout);
+Content$4.moduleId = "D:/krrish/v3/src/content/hero-slides/slide-3.mdx";
+__astro_tag_component__(Content$4, 'astro:jsx');
+
+const slide3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  Content: Content$4,
+  __usesAstroImage: __usesAstroImage$4,
+  default: Content$4,
+  file: file$4,
+  frontmatter: frontmatter$4,
+  getHeadings: getHeadings$4,
+  url: url$4
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const frontmatter$3 = {
+  "title": "precision-fabrication",
+  "image": "/src/assets/images/slide-1/image.png",
+  "serviceTitle": "Precision Fabrication",
+  "serviceDescription": "Custom metal fabrication with state-of-the-art machinery and expert craftsmanship",
+  "icon": "lucide:settings-2",
+  "link": "/services/fabrication",
+  "order": 1
+};
+function getHeadings$3() {
+  return [];
+}
+const __usesAstroImage$3 = true;
+function _createMdxContent$3(props) {
+  const _components = {
+    li: "li",
+    p: "p",
+    ul: "ul",
+    ...props.components
+  };
+  return createVNode(Fragment, {
+    children: [createVNode(_components.p, {
+      children: "Our precision fabrication services include:"
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: "CNC Machining"
+      }), "\n", createVNode(_components.li, {
+        children: "Sheet Metal Work"
+      }), "\n", createVNode(_components.li, {
+        children: "Custom Fabrication"
+      }), "\n", createVNode(_components.li, {
+        children: "Quality Assurance"
+      }), "\n"]
+    })]
+  });
+}
+function MDXContent$3(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? createVNode(MDXLayout, {
+    ...props,
+    children: createVNode(_createMdxContent$3, {
+      ...props
+    })
+  }) : _createMdxContent$3(props);
+}
+
+const url$3 = "src/content/hero-slides/slide-1.mdx";
+const file$3 = "D:/krrish/v3/src/content/hero-slides/slide-1.mdx";
+const Content$3 = (props = {}) => MDXContent$3({
+  ...props,
+  components: { Fragment: Fragment, ...props.components, "astro-image":  props.components?.img ?? $$Image },
+});
+Content$3[Symbol.for('mdx-component')] = true;
+Content$3[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter$3.layout);
+Content$3.moduleId = "D:/krrish/v3/src/content/hero-slides/slide-1.mdx";
+__astro_tag_component__(Content$3, 'astro:jsx');
+
+const slide1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  Content: Content$3,
+  __usesAstroImage: __usesAstroImage$3,
+  default: Content$3,
+  file: file$3,
+  frontmatter: frontmatter$3,
+  getHeadings: getHeadings$3,
+  url: url$3
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const frontmatter$2 = {
+  "title": "industrial-supply",
+  "image": "/src/assets/images/slide-2/image.png",
+  "serviceTitle": "Industrial Supply",
+  "serviceDescription": "Comprehensive range of industrial materials and components for manufacturing needs",
+  "icon": "lucide:boxes",
+  "link": "/services/supply",
+  "order": 2
+};
+function getHeadings$2() {
+  return [];
+}
+const __usesAstroImage$2 = true;
+function _createMdxContent$2(props) {
+  const _components = {
+    li: "li",
+    p: "p",
+    ul: "ul",
+    ...props.components
+  };
+  return createVNode(Fragment, {
+    children: [createVNode(_components.p, {
+      children: "We supply a wide range of industrial materials:"
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: "Raw Materials"
+      }), "\n", createVNode(_components.li, {
+        children: "Industrial Components"
+      }), "\n", createVNode(_components.li, {
+        children: "Manufacturing Supplies"
+      }), "\n", createVNode(_components.li, {
+        children: "Custom Orders"
+      }), "\n"]
+    })]
+  });
+}
+function MDXContent$2(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? createVNode(MDXLayout, {
+    ...props,
+    children: createVNode(_createMdxContent$2, {
+      ...props
+    })
+  }) : _createMdxContent$2(props);
+}
+
+const url$2 = "src/content/hero-slides/slide-2.mdx";
+const file$2 = "D:/krrish/v3/src/content/hero-slides/slide-2.mdx";
+const Content$2 = (props = {}) => MDXContent$2({
+  ...props,
+  components: { Fragment: Fragment, ...props.components, "astro-image":  props.components?.img ?? $$Image },
+});
+Content$2[Symbol.for('mdx-component')] = true;
+Content$2[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter$2.layout);
+Content$2.moduleId = "D:/krrish/v3/src/content/hero-slides/slide-2.mdx";
+__astro_tag_component__(Content$2, 'astro:jsx');
+
+const slide2 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  Content: Content$2,
+  __usesAstroImage: __usesAstroImage$2,
+  default: Content$2,
+  file: file$2,
+  frontmatter: frontmatter$2,
+  getHeadings: getHeadings$2,
+  url: url$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const frontmatter$1 = {
+  "title": "technical-expertise",
+  "image": "/src/assets/images/slide4.jpg",
+  "serviceTitle": "Technical Expertise",
+  "serviceDescription": "15+ years of technical excellence in manufacturing and fabrication services",
+  "icon": "lucide:award",
+  "link": "/services/expertise",
+  "order": 4
+};
+function getHeadings$1() {
+  return [];
+}
+const __usesAstroImage$1 = true;
+function _createMdxContent$1(props) {
+  const _components = {
+    li: "li",
+    p: "p",
+    ul: "ul",
+    ...props.components
+  };
+  return createVNode(Fragment, {
+    children: [createVNode(_components.p, {
+      children: "Our technical expertise covers:"
+    }), "\n", createVNode(_components.ul, {
+      children: ["\n", createVNode(_components.li, {
+        children: "Manufacturing Excellence"
+      }), "\n", createVNode(_components.li, {
+        children: "Quality Control"
+      }), "\n", createVNode(_components.li, {
+        children: "Process Optimization"
+      }), "\n", createVNode(_components.li, {
+        children: "Industry Best Practices"
+      }), "\n"]
+    })]
+  });
+}
+function MDXContent$1(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? createVNode(MDXLayout, {
+    ...props,
+    children: createVNode(_createMdxContent$1, {
+      ...props
+    })
+  }) : _createMdxContent$1(props);
+}
+
+const url$1 = "src/content/hero-slides/slide-4.mdx";
+const file$1 = "D:/krrish/v3/src/content/hero-slides/slide-4.mdx";
+const Content$1 = (props = {}) => MDXContent$1({
+  ...props,
+  components: { Fragment: Fragment, ...props.components, "astro-image":  props.components?.img ?? $$Image },
+});
+Content$1[Symbol.for('mdx-component')] = true;
+Content$1[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter$1.layout);
+Content$1.moduleId = "D:/krrish/v3/src/content/hero-slides/slide-4.mdx";
+__astro_tag_component__(Content$1, 'astro:jsx');
+
+const slide4 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  Content: Content$1,
+  __usesAstroImage: __usesAstroImage$1,
+  default: Content$1,
+  file: file$1,
+  frontmatter: frontmatter$1,
+  getHeadings: getHeadings$1,
+  url: url$1
+}, Symbol.toStringTag, { value: 'Module' }));
+
 const frontmatter = {
   "title": "Industrial Excellence in Fabrication & Supply",
   "subtitle": "15+ Years of Precision Manufacturing",
@@ -2362,4 +2362,4 @@ const main = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   url
 }, Symbol.toStringTag, { value: 'Module' }));
 
-export { $$Image as $, VALID_INPUT_FORMATS as V, _astro_assets as _, isRemotePath as a, isRemoteAllowed as b, appendForwardSlash as c, removeTrailingForwardSlash as d, slash as e, fileExtension as f, getConfiguredImageService as g, baseService as h, imageConfig as i, joinPaths as j, parseQuality as k, assetsConfig as l, createGetHeadings as m, createContentComponent as n, $$Renderer as o, prependForwardSlash as p, slide1$1 as q, removeBase as r, server_default as s, trimSlashes as t, slide3$1 as u, slide2$1 as v, slide4$1 as w, main$1 as x };
+export { $$Image as $, VALID_INPUT_FORMATS as V, _astro_assets as _, isRemotePath as a, isRemoteAllowed as b, appendForwardSlash as c, removeTrailingForwardSlash as d, slash as e, fileExtension as f, getConfiguredImageService as g, baseService as h, imageConfig as i, joinPaths as j, parseQuality as k, assetsConfig as l, createGetHeadings as m, createContentComponent as n, $$Renderer as o, prependForwardSlash as p, slide3$1 as q, removeBase as r, server_default as s, trimSlashes as t, slide1$1 as u, slide2$1 as v, slide4$1 as w, main$1 as x };
