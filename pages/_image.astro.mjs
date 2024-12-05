@@ -1,4 +1,4 @@
-import { g as getConfiguredImageService, i as imageConfig, a as isRemotePath, b as isRemoteAllowed } from '../chunks/markdown_C5xX-0x1.mjs';
+import { g as getConfiguredImageService, i as imageConfig, a as isRemotePath, b as isRemoteAllowed } from '../chunks/markdown_boHHEXp2.mjs';
 import * as mime from 'mrmime';
 export { renderers } from '../renderers.mjs';
 

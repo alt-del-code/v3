@@ -1,4 +1,3 @@
-/* empty css                                                   */
 import { a as createComponent, r as renderTemplate, d as renderComponent } from '../../chunks/astro/server_CW4UvyD6.mjs';
 import 'kleur/colors';
 export { renderers } from '../../renderers.mjs';

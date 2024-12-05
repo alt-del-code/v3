@@ -7,7 +7,7 @@ import 'clsx';
 import buffer from 'node:buffer';
 import crypto from 'node:crypto';
 import { Http2ServerResponse } from 'node:http2';
-import { c as appendForwardSlash$1, j as joinPaths, d as removeTrailingForwardSlash, t as trimSlashes, f as fileExtension, e as slash, p as prependForwardSlash$1 } from './markdown_C5xX-0x1.mjs';
+import { c as appendForwardSlash$1, j as joinPaths, d as removeTrailingForwardSlash, t as trimSlashes, f as fileExtension, e as slash, p as prependForwardSlash$1 } from './markdown_boHHEXp2.mjs';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import fs from 'node:fs';
 import http from 'node:http';
