@@ -9,7 +9,7 @@ export const heroSlides = collection({
     title: fields.slug({ name: { label: "Title" } }),
     image: fields.image({
       label: "Slide Image",
-      directory: "src/assets/images",
+      directory: "public/assets/images",
       publicPath: "/assets/images",
     }),
     serviceTitle: fields.text({ label: "Service Title" }),
@@ -22,10 +22,12 @@ export const heroSlides = collection({
     order: fields.number({ label: "Display Order" }),
     content: fields.mdx({
       label: "Content",
-      formatting: true,
-      dividers: true,
-      links: true,
-      images: true,
+      options:{
+        formatting: true,
+        dividers: true,
+        links: true,
+        images: true,
+      }
     }),
   },
 });

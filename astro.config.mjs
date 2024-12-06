@@ -18,7 +18,6 @@ import node from '@astrojs/node';
 export default defineConfig({
   output: 'static',
   site: 'https://alt-del-code.github.io',
-  base: 'v3',
 
   integrations: [
     react({
