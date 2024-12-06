@@ -18,7 +18,11 @@ const BrandMark = () => {
 
 export default config({
   storage: {
-    kind: 'local',
+    kind: 'github',
+    repo: {
+      owner: 'alt-del-code',
+      name: 'v3',
+    },
   },
   ui: {
     brand: {

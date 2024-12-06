@@ -12,12 +12,14 @@ import icon from 'astro-icon';
 import keystatic from '@keystatic/astro';
 import mdx from '@astrojs/mdx';
 
-import vercel from '@astrojs/vercel';
+import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
   site: 'https://alt-del-code.github.io',
+  base: 'v3',
+
   integrations: [
     react({
       include: ['**/react/*', '**/keystatic/*']
@@ -38,5 +40,11 @@ export default defineConfig({
     mdx()
   ],
 
-  adapter: vercel()
+  adapter: node({
+    mode: 'standalone'
+  }),
+
+  build: {
+    assets: '_assets'
+  }
 });
