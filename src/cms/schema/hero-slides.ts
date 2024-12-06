@@ -10,7 +10,7 @@ export const heroSlides = collection({
     image: fields.image({
       label: "Slide Image",
       directory: "src/assets/images",
-      publicPath: "/src/assets/images",
+      publicPath: "/assets/images",
     }),
     serviceTitle: fields.text({ label: "Service Title" }),
     serviceDescription: fields.text({

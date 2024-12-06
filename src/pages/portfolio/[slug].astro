@@ -10,17 +10,19 @@ type PortfolioEntry = FabricationEntry | MaterialEntry;
 export async function getStaticPaths() {
   const fabricationItems = await getCollection('fabrication');
   const materialItems = await getCollection('materials');
-  const allItems: PortfolioEntry[] = [...fabricationItems, ...materialItems];
+  const allItems = [...fabricationItems, ...materialItems];
 
-  return allItems.map((item) => ({
-    params: { slug: item.id.split('/').pop() },
+  return allItems.map((item: PortfolioEntry) => ({
+    params: { slug: item.slug },
     props: { item },
   }));
 }
 
-const { item } = Astro.props;
+interface Props {
+  item: PortfolioEntry;
+}
 
-// Render the content
+const { item } = Astro.props;
 const { Content } = await item.render();
 
 // Determine if it's a fabrication or material item
