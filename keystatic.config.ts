@@ -13,6 +13,6 @@ export default config({
     "about": about,
     "fabrication": fabrication,
     "materials": materials,
-    blog: blog,
+    "blog": blog,
   },
 });

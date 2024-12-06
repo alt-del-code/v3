@@ -14,9 +14,13 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://alt-del-code.github.io',
   integrations: [
     react(),
-    tailwind(),
+    tailwind({
+      // Ensure Tailwind processes all content
+      applyBaseStyles: false,
+    }),
     markdoc(),
     sitemap(),
     partytown(),
@@ -29,15 +33,18 @@ export default defineConfig({
     keystatic(),
     mdx(),
   ],
-
-  site: 'https://krrishco.com',
+  
+  build: {
+    assets: '_astro',
+    inlineStylesheets: 'auto'
+  },
 
   adapter: node({
     mode: 'standalone'
   }),
 
-   // New Astro 5.0 configurations
-   prefetch: {
+  // New Astro 5.0 configurations
+  prefetch: {
     prefetchAll: true,
     defaultStrategy: 'hover'
   },
