@@ -1,3 +1,6 @@
+/* Import design system */
+@import './design-system.css';
+
 /* Base Styles */
 @tailwind base;
 @tailwind components;
@@ -115,6 +118,44 @@
   }
 }
 
+/* Update transitions to use CSS variables */
+*, *::before, *::after {
+  transition: 
+    background-color var(--transition-slow),
+    border-color var(--transition-slow),
+    color var(--transition-normal),
+    box-shadow var(--transition-slow);
+}
+
+/* Update selection color to use CSS variables */
+::selection {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-900);
+}
+
+/* Dark mode noise texture */
+.dark body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Smooth background transition */
+body {
+  transition: background-color var(--transition-slow);
+}
+
+.dark body {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    var(--color-bg-soft) 100%
+  );
+}
+
 /* Custom Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -137,4 +178,3 @@
               color 300ms ease-in-out,
               box-shadow var(--transition-duration) ease-in-out;
 }
-  

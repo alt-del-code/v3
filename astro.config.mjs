@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import markdoc from '@astrojs/markdoc';
@@ -20,11 +19,9 @@ export default defineConfig({
   site: 'https://alt-del-code.github.io',
 
   integrations: [
+    tailwind(),
     react({
       include: ['**/react/*', '**/keystatic/*']
-    }),
-    tailwind({
-      applyBaseStyles: false,
     }),
     markdoc(),
     sitemap(),
