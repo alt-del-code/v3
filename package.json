@@ -8,6 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "npm run build && gh-pages -d dist",
+    "deploy1": "astro build && gh-pages -d dist",
     "deploy_new": "npm run build && gh-pages -d dist/client -b gh-pages-client && gh-pages -d dist/server -b gh-pages-server"
   },
   "dependencies": {
@@ -18,6 +19,7 @@
     "@astrojs/react": "^4.0.0",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.3",
+    "@astrojs/vercel": "^8.0.0",
     "@iconify-json/lucide": "^1.2.17",
     "@iconify-json/ph": "^1.2.1",
     "@keystatic/astro": "^5.0.3",
