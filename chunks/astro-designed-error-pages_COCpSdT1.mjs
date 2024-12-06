@@ -1,4 +1,4 @@
-import { ao as NOOP_MIDDLEWARE_HEADER, a1 as DEFAULT_404_COMPONENT } from './astro/server_CW4UvyD6.mjs';
+import { am as NOOP_MIDDLEWARE_HEADER, $ as DEFAULT_404_COMPONENT } from './astro/server_BEqVIZ2O.mjs';
 import { parse } from 'devalue';
 import { escape } from 'html-escaper';
 
@@ -13,7 +13,7 @@ const ACTION_QUERY_PARAMS = {
   actionPayload: "_astroActionPayload"
 };
 
-const __vite_import_meta_env__ = {"ASSETS_PREFIX": undefined, "BASE_URL": "/v3", "DEV": false, "MODE": "production", "PROD": true, "SITE": "https://alt-del-code.github.io", "SSR": true};
+const __vite_import_meta_env__ = {"ASSETS_PREFIX": undefined, "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "PUBLIC_KEYSTATIC_GITHUB_APP_SLUG": "alt-del-code-keystatic", "SITE": "https://alt-del-code.github.io", "SSR": true};
 const codeToStatusMap = {
   // Implemented from tRPC error code table
   // https://trpc.io/docs/server/error-handling#error-codes

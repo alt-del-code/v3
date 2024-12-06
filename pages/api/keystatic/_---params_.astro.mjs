@@ -1,6 +1,7 @@
 import { makeGenericAPIRouteHandler } from '@keystatic/core/api/generic';
 import { parseString } from 'set-cookie-parser';
 import { collection, fields, config as config$1 } from '@keystatic/core';
+import React from 'react';
 export { renderers } from '../../../renderers.mjs';
 
 function makeHandler(_config) {
@@ -10,13 +11,13 @@ function makeHandler(_config) {
     const handler = makeGenericAPIRouteHandler({
       ..._config,
       clientId: (_ref = (_config$clientId = _config.clientId) !== null && _config$clientId !== void 0 ? _config$clientId : envVarsForCf === null || envVarsForCf === void 0 ? void 0 : envVarsForCf.KEYSTATIC_GITHUB_CLIENT_ID) !== null && _ref !== void 0 ? _ref : tryOrUndefined(() => {
-        return undefined                                          ;
+        return process.env.KEYSTATIC_GITHUB_CLIENT_ID;
       }),
       clientSecret: (_ref2 = (_config$clientSecret = _config.clientSecret) !== null && _config$clientSecret !== void 0 ? _config$clientSecret : envVarsForCf === null || envVarsForCf === void 0 ? void 0 : envVarsForCf.KEYSTATIC_GITHUB_CLIENT_SECRET) !== null && _ref2 !== void 0 ? _ref2 : tryOrUndefined(() => {
-        return undefined                                              ;
+        return process.env.KEYSTATIC_GITHUB_CLIENT_SECRET;
       }),
       secret: (_ref3 = (_config$secret = _config.secret) !== null && _config$secret !== void 0 ? _config$secret : envVarsForCf === null || envVarsForCf === void 0 ? void 0 : envVarsForCf.KEYSTATIC_SECRET) !== null && _ref3 !== void 0 ? _ref3 : tryOrUndefined(() => {
-        return undefined                                ;
+        return process.env.KEYSTATIC_SECRET;
       })
     }, {
       slugEnvName: "PUBLIC_KEYSTATIC_GITHUB_APP_SLUG"
@@ -95,8 +96,8 @@ const heroSlides = collection({
     title: fields.slug({ name: { label: "Title" } }),
     image: fields.image({
       label: "Slide Image",
-      directory: "src/assets/images",
-      publicPath: "/src/assets/images"
+      directory: "public/assets/images",
+      publicPath: "/assets/images"
     }),
     serviceTitle: fields.text({ label: "Service Title" }),
     serviceDescription: fields.text({
@@ -108,10 +109,12 @@ const heroSlides = collection({
     order: fields.number({ label: "Display Order" }),
     content: fields.mdx({
       label: "Content",
-      formatting: true,
-      dividers: true,
-      links: true,
-      images: true
+      options: {
+        formatting: true,
+        dividers: true,
+        links: true,
+        images: true
+      }
     })
   }
 });
@@ -419,16 +422,41 @@ const blog = collection({
   }
 });
 
+const BrandMark = () => {
+  return React.createElement("div", {
+    style: {
+      fontSize: "24px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, "🚀");
+};
 const config = config$1({
   storage: {
-    kind: "local"
+    kind: "local",
+    repo: {
+      owner: "alt-del-code",
+      name: "v3"
+    }
+  },
+  ui: {
+    brand: {
+      name: "Krrishco CMS",
+      mark: BrandMark
+    },
+    navigation: {
+      Content: ["hero-slides", "about"],
+      Portfolio: ["fabrication", "materials"],
+      Blog: ["blog"]
+    }
   },
   collections: {
     "hero-slides": heroSlides,
     "about": about,
     "fabrication": fabrication,
     "materials": materials,
-    blog
+    "blog": blog
   }
 });
 

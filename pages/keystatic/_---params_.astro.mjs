@@ -1,4 +1,4 @@
-import { a as createComponent, r as renderTemplate, d as renderComponent } from '../../chunks/astro/server_CW4UvyD6.mjs';
+import { a as createComponent, r as renderTemplate, b as renderComponent } from '../../chunks/astro/server_BEqVIZ2O.mjs';
 import 'kleur/colors';
 export { renderers } from '../../renderers.mjs';
 

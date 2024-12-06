@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
-import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_FQQ1SATn.mjs';
-import { manifest } from './manifest_BcVzfBjz.mjs';
+import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_BEndwlxf.mjs';
+import { manifest } from './manifest_B-5h2LGC.mjs';
 
 const serverIslandMap = new Map([
 ]);;
@@ -42,7 +42,7 @@ const _args = {
     "server": "file:///D:/krrish/v3/dist/server/",
     "host": "127.0.0.1",
     "port": 4321,
-    "assets": "_astro"
+    "assets": "_assets"
 };
 const _exports = createExports(_manifest, _args);
 const handler = _exports['handler'];
